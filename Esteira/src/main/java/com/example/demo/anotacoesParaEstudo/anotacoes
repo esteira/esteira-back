@@ -1,0 +1,30 @@
+ 1-
+ @RestController economiza a necessidade de colocar @ResponseBody em cada método,
+ fazendo a classe inteira retornar o resultado diretamente no corpo da resposta HTTP.
+
+ 1.1-
+ @RequestMapping define uma rota base para a classe,
+facilitando o mapeamento de URLs para os métodos sem a necessidade de especificar
+
+  @1 - CONCLUSÕES:
+  Sem essas anotações, o código ficaria mais verboso e menos estruturado,
+   com menos reutilização e mais potencial para erros.
+
+-----------------------
+
+   2-
+   Resumo do Fluxo:
+   Requisição: Quando alguém faz uma requisição para http://localhost:8080/spotify/api/albums,
+    o método helloWorld() no PlaylistController é chamado.
+
+   Cliente Feign: O método helloWorld() chama o cliente Feign (googleClient.helloWorld()),
+    que envia uma requisição HTTP GET para https://google.com.
+
+   Resposta: A resposta obtida dessa requisição HTTP é capturada
+    (provavelmente o conteúdo da página principal do Google ou um erro,
+    já que o Google não retorna um JSON ou estrutura esperada nesse endpoint) e
+     retornada como uma String.
+
+   Resposta HTTP: O método helloWorld() então retorna essa resposta como um
+    ResponseEntity<String>,
+    que será enviada como a resposta da requisição HTTP original.
