@@ -1,7 +1,7 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Client.AutorizacaoClient;
 import com.example.demo.Model.Credenciais;
+import com.example.demo.Model.Services.TokenService;
 import com.example.demo.Model.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -21,11 +21,13 @@ public class AutenticacaoController {
 
     private final RestTemplate restTemplate;
     private final Credenciais credenciais;
+    private final TokenService tokenService;
 
     @Autowired
-    public AutenticacaoController(RestTemplate restTemplate, Credenciais credenciais) {
+    public AutenticacaoController(RestTemplate restTemplate, Credenciais credenciais, TokenService tokenService) {
         this.restTemplate = restTemplate;
         this.credenciais = credenciais;
+        this.tokenService = tokenService;
     }
 
     @GetMapping("/login")
@@ -46,13 +48,13 @@ public class AutenticacaoController {
     @GetMapping("api/user/callback")
     public TokenResponse PegaToken(@RequestParam("code") String codigo, @RequestParam("state") String state) {
         // Cria o Authorization Header dinâmico com o Base64 codificado das credenciais
-        System.out.println("Método PegaToken chamado");
+        System.out.println("---------------------Método PegaToken chamado---------------------");
 
 
         try {
             String authorizationHeader = "Basic " + Base64.getEncoder().encodeToString(
                     (credenciais.getClientId() + ":" + credenciais.getClientSecret()).getBytes());
-            System.out.println(authorizationHeader);
+
 
             // Criação dos headers da requisição
             HttpHeaders headers = new HttpHeaders();
@@ -76,6 +78,7 @@ public class AutenticacaoController {
                     requestEntity,
                     TokenResponse.class
             );
+            tokenService.salvarToken(responseEntity.getBody());
 
             return responseEntity.getBody();
         } catch (Exception e) {

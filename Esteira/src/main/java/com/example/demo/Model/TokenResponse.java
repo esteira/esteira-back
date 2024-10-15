@@ -1,7 +1,10 @@
 package com.example.demo.Model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TokenResponse {
 
     @JsonProperty("access_token")
@@ -14,4 +17,24 @@ public class TokenResponse {
     private String refreshToken;
     @JsonProperty("scope")
     private String scope;
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public String getTokenType() {
+        return tokenType;
+    }
+
+    public int getExpiresIn() {
+        return expiresIn;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public String getScope() {
+        return scope;
+    }
 }
