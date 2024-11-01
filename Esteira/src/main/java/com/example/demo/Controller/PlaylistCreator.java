@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.Model.Services.PlaylistService;
 import com.example.demo.Model.Services.TokenService;
 import com.example.demo.Model.Services.UsuarioService;
 import com.example.demo.Model.UserResponse;
@@ -18,12 +19,13 @@ public class PlaylistCreator {
     private final TokenService tokenService;
     private UsuarioService usuarioService;
     private final RestTemplate restTemplate;
+    private final PlaylistService playlistService;
 
-    public PlaylistCreator(TokenService tokenService, UsuarioService usuarioService, RestTemplate restTemplate) {
+    public PlaylistCreator(TokenService tokenService, UsuarioService usuarioService, RestTemplate restTemplate, PlaylistService playlistService) {
         this.tokenService = tokenService;
         this.usuarioService = usuarioService;
         this.restTemplate = restTemplate;
-
+        this.playlistService = playlistService;
     }
 
     @GetMapping("/pegaId")
@@ -59,16 +61,16 @@ public class PlaylistCreator {
     }
 
     @GetMapping("/criaPlaylist")
-    public Playlist geraPlaylist() {
+    public Playlist geraPlaylistVazia() {
 
-        System.out.println(tokenService.obterToken());
+
         String token = tokenService.obterToken();
-        System.out.println(token);
+
 
         System.out.println("-------COMEÇA A GERAR PLAYLIST-------");
 
         try{
-            String playlistData = "{ \"name\": \"nova playlist vazia\", \"description\": \"primeira playlist a ser populada por puredo\", \"public\": true }";
+            String playlistData = "{ \"name\": \" playlist com Id\", \"description\": \" experimento 221 \", \"public\": true }";
 
 
             HttpHeaders headers = new HttpHeaders();
@@ -88,6 +90,9 @@ public class PlaylistCreator {
             );
 
             System.out.println("playlist criada e vazia!");
+            playlistService.salvarPlaylist(responseEntity.getBody());
+            System.out.println(playlistService.getPlaylistId(responseEntity.getBody()));
+
             return responseEntity.getBody();
         } catch (Error e) {
             e.printStackTrace();
@@ -95,4 +100,5 @@ public class PlaylistCreator {
         }
 
     }
+
 }

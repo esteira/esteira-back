@@ -28,3 +28,21 @@ facilitando o mapeamento de URLs para os métodos sem a necessidade de especific
    Resposta HTTP: O método helloWorld() então retorna essa resposta como um
     ResponseEntity<String>,
     que será enviada como a resposta da requisição HTTP original.
+
+    ----------------------------------------
+
+    O comprimento médio da passada varia de pessoa para pessoa,
+    mas uma estimativa geral é que ele seja de cerca de 0,4 a 0,6 vezes a altura da pessoa.
+        CoeficientePassada(playlistDTO.altura) {
+                if (playlistDTO.altura > 1,50 && playlistDTO.altura < 1,75) {
+                    return coeficientePassada = 0,4
+                }
+                if(playlistDTO.altura > 1,75 && playlistDTO.altura < 2) {
+                    return coeficientePassada = 0,5
+                }
+                if (playlistDTO.altura > 2) {
+                    return coeficientePassada = 0,6
+                }
+            }
+
+            Então uma

@@ -14,10 +14,46 @@ import java.util.Objects;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Component
 public class Playlist {
+    public Playlist(String spotifyId, String nome, boolean publica, boolean collaborative) {
+        this.spotifyId = spotifyId;
+        this.nome = nome;
+        this.publica = publica;
+        this.collaborative = collaborative;
+    }
+
+    public Playlist() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long playlistId;
+
+    public long getPlaylistId() {
+        return playlistId;
+    }
+
+    public String getSpotifyId() {
+        return spotifyId;
+    }
+
+    public boolean isCollaborative() {
+        return collaborative;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public boolean isPublica() {
+        return publica;
+    }
+
+    @JsonProperty("id")
+    private String spotifyId;
 
     @JsonProperty("collaborative")
     private boolean collaborative;

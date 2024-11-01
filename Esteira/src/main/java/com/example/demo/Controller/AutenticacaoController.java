@@ -32,6 +32,8 @@ public class AutenticacaoController {
 
     @GetMapping("/login")
     public RedirectView logar() {
+
+        System.out.println("JOao fez login + 1");
         // Montando a URL de autorização do Spotify
         String url = "https://accounts.spotify.com/authorize" +
                 "?client_id=" + credenciais.getClientId() +
@@ -45,7 +47,7 @@ public class AutenticacaoController {
     }
 
 
-    @GetMapping("api/user/callback")
+    @GetMapping("/api/user/callback")
     public TokenResponse PegaToken(@RequestParam("code") String codigo, @RequestParam("state") String state) {
         // Cria o Authorization Header dinâmico com o Base64 codificado das credenciais
         System.out.println("---------------------Método PegaToken chamado---------------------");
@@ -79,6 +81,7 @@ public class AutenticacaoController {
                     TokenResponse.class
             );
             tokenService.salvarToken(responseEntity.getBody());
+            System.out.println("O TOKEN É ESSE AQUI" + tokenService.obterToken());
 
             return responseEntity.getBody();
         } catch (Exception e) {

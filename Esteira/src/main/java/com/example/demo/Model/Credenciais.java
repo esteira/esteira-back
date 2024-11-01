@@ -1,38 +1,46 @@
+
 package com.example.demo.Model;
 
 import org.springframework.stereotype.Component;
+import io.github.cdimascio.dotenv.Dotenv;
 
 @Component
 public class Credenciais {
+    private final Dotenv dotenv = Dotenv.configure()
+            .directory("C:/Users/Jayro/Downloads/Programação/Esteira/Esteira/.env")
+            .load();
 
-    private String clientId = "c6ded4fe45494a83ad63bb28a654897b";
-    private String clientSecret = "8f40feea75f24b2aa67513af23faed15";
-    private String responseType = "code";
-    private String redirectUri = "http://localhost:8080/api/user/callback";
-    private String state = "state";
-    private String scope = "user-read-private user-read-email user-library-read user-library-modify user-read-recently-played user-top-read user-read-playback-position user-follow-read user-follow-modify playlist-modify-public playlist-modify-private playlist-read-collaborative playlist-read-private streaming streaming user-read-currently-playing user-modify-playback-state user-read-playback-state ugc-image-upload";
+    private String clientId = dotenv.get("SPOTIFY_CLIENT_ID");
+    private String clientSecret = dotenv.get("SPOTIFY_CLIENT_SECRET");
+    private String responseType = dotenv.get("SPOTIFY_RESPONSE_TYPE");
+    private String redirectUri = dotenv.get("SPOTIFY_REDIRECT_URI");
+    private String state = dotenv.get("SPOTIFY_STATE");
+    private String scope = dotenv.get("SPOTIFY_SCOPE");
+
 
     public String getClientId() {
-        return clientId;
+        return this.clientId;
     }
 
     public String getResponseType() {
-        return responseType;
+        return this.responseType;
     }
 
     public String getRedirectUri() {
-        return redirectUri;
+        return this.redirectUri;
     }
 
     public String getState() {
-        return state;
+        return this.state;
     }
 
     public String getScope() {
-        return scope;
+        return this.scope;
     }
 
     public String getClientSecret() {
-        return clientSecret;
+        return this.clientSecret;
     }
+
 }
+
