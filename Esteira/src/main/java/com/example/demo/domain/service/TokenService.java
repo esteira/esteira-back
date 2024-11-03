@@ -1,6 +1,5 @@
-package com.example.demo.Model.Services;
+package com.example.demo.domain.service;
 
-import com.example.demo.Model.TokenResponse;
 import com.example.demo.api.dto.LoginDTO;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;

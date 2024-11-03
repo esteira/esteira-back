@@ -2,10 +2,10 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.Model.Services.PlaylistService;
-import com.example.demo.Model.Services.TokenService;
+import com.example.demo.domain.entity.Playlist;
+import com.example.demo.domain.service.TokenService;
 import com.example.demo.Model.Services.UsuarioService;
-import com.example.demo.Model.UserResponse;
-import jdk.jfr.ContentType;
+import com.example.demo.domain.entity.UserResponse;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

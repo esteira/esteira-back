@@ -1,8 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.Model.Services.TokenService;
+import com.example.demo.domain.service.TokenService;
 import com.example.demo.api.dto.LoginDTO;
-import com.example.demo.Model.TokenResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
