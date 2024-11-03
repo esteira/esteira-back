@@ -2,6 +2,7 @@ package com.example.demo.domain.entity;
 
 
 import com.example.demo.Model.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -91,5 +92,12 @@ public class Album {
     @JsonProperty("popularity")
     private Integer popularity;
 
+    @JsonIgnore
+    public Long getId() {
+        return id;
+    }
 
+    public String getAlbumId() {
+        return albumId;
+    }
 }

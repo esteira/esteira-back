@@ -69,4 +69,10 @@ public class Track {
     private List<Artist> artists;
 
 
+    @JsonProperty("id")
+    public String getTrackId() {
+        return trackId;
+    }
+
+
 }

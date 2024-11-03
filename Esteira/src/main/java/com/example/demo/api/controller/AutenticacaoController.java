@@ -1,14 +1,12 @@
-package com.example.demo.Controller;
+package com.example.demo.api.controller;
 
 import com.example.demo.api.dto.LoginDTO;
 import com.example.demo.service.AutenticacaoService;
-import org.bouncycastle.jcajce.provider.asymmetric.ec.GMSignatureSpi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.view.RedirectView;
 
