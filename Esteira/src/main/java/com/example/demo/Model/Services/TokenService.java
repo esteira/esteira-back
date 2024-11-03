@@ -1,6 +1,7 @@
 package com.example.demo.Model.Services;
 
 import com.example.demo.Model.TokenResponse;
+import com.example.demo.api.dto.LoginDTO;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
@@ -8,15 +9,15 @@ import org.springframework.stereotype.Service;
 @Lazy
 public class TokenService {
 
-    public TokenService(TokenResponse tokenResponse) {
+    public TokenService(@Lazy LoginDTO.Response.TokenResponse tokenResponse) {
         this.tokenResponse = tokenResponse;
     }
 
-    private TokenResponse tokenResponse;
+    private LoginDTO.Response.TokenResponse tokenResponse;
 
-    public void salvarToken(TokenResponse tokenResponse) {
+    public void salvarToken(LoginDTO.Response.TokenResponse tokenResponse) {
         this.tokenResponse = tokenResponse;
-        System.out.println("Token salvo com sucesso!" + tokenResponse);
+        System.out.println("Token salvo com sucesso! O token é esse aqui: " + tokenResponse.getAccessToken());
     }
 
     public String obterToken() {
