@@ -17,7 +17,7 @@ public class Tracks {
     private String href;
 
     @JsonProperty("limit")
-    private Integer limit;
+    private Integer limitOfTracks;
 
     @JsonProperty("next")
     private String next;
