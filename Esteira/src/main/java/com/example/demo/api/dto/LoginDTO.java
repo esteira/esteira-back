@@ -7,9 +7,7 @@ import lombok.Data;
 
 public enum LoginDTO {;
 
-    private static final Dotenv dotenv = Dotenv.configure()
-            .directory("C:/Users/panduran/Documents/esteira-back/Esteira/.env")
-            .load();
+    private static final Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
 
     // Interface para cada parâmetro de credencial
     private interface ClientId {

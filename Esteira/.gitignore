@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Spotify API Credentials ###
-.env
+../.env
