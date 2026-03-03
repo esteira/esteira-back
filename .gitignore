@@ -1,0 +1,13 @@
+# Environment files
+.env
+.env.*
+
+# IntelliJ
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
