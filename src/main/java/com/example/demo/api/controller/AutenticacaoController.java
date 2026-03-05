@@ -1,7 +1,7 @@
 package com.example.demo.api.controller;
 
 import com.example.demo.api.dto.LoginDTO;
-import com.example.demo.service.AutenticacaoService;
+import com.example.demo.domain.service.AutenticacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

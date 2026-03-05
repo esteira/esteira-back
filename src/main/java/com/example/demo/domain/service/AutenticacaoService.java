@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.domain.service;
 
 import com.example.demo.domain.service.TokenService;
 import com.example.demo.api.dto.LoginDTO;
